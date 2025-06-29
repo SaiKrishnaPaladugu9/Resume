@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paladugu Sai Krishna - CV</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        :root {
+            --ferrari-red: #dc143c;
+            --man-utd-red: #da020e;
+            --ferrari-yellow: #ffd700;
+            --man-utd-yellow: #ffd700;
+            --secondary-blue: #2563eb;
+            --accent-green: #16a34a;
+            --dark-bg: #0f172a;
+            --card-bg: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --border-color: #334155;
+            --gradient-start: #da020e;
+            --gradient-end: #dc143c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #1a202c 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at 25% 25%, rgba(218, 2, 14, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(220, 20, 60, 0.15) 0%, transparent 50%);
+            animation: rotate 20s linear infinite;
+        }
+
+        .header::after {
+            content: '🏎️';
+            position: absolute;
+            top: 20%;
+            right: 10%;
+            font-size: 3rem;
+            opacity: 0.3;
+            animation: drift 8s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        @keyframes drift {
+            0%, 100% { transform: translateX(0) rotate(0deg); }
+            50% { transform: translateX(-20px) rotate(-5deg); }
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .profile-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 3;
+        }
+
+        .profile-pic-container {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-pic {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 6px solid transparent;
+            background: linear-gradient(45deg, var(--man-utd-red), var(--ferrari-red), var(--ferrari-yellow));
+            background-clip: padding-box;
+            padding: 4px;
+            box-shadow: 0 20px 40px rgba(218, 2, 14, 0.3);
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .profile-pic:hover {
+            transform: scale(1.05) rotate(5deg);
+            box-shadow: 0 25px 50px rgba(218, 2, 14, 0.4);
+        }
+
+        .profile-pic img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            background: linear-gradient(135deg, var(--card-bg), #2a3441);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--text-secondary);
+        }
+
+        .profile-badges {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .badge {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            animation: bounce 2s ease-in-out infinite;
+            animation-delay: var(--delay, 0s);
+        }
+
+        .man-utd-badge {
+            background: linear-gradient(45deg, var(--man-utd-red), #ff4444);
+        }
+
+        .ferrari-badge {
+            background: linear-gradient(45deg, var(--ferrari-red), var(--ferrari-yellow));
+        }
+
+        .name {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .nickname {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--ferrari-yellow);
+            margin-bottom: 1rem;
+            font-style: italic;
+            text-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
+        }
+
+        .sports-icons {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
+        }
+
+        .contact-item:hover {
+            color: var(--ferrari-red);
+        }
+
+        .linkedin-link {
+            color: var(--secondary-blue);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .linkedin-link:hover {
+            color: var(--ferrari-red);
+            transform: translateY(-2px);
+        }
+
+        .languages-section {
+            margin-top: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .languages-container {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .language-badge {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.2), rgba(16, 163, 74, 0.2));
+            border: 1px solid var(--secondary-blue);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: 500;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .language-badge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .language-badge:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+            border-color: var(--ferrari-red);
+        }
+
+        .language-badge:hover::before {
+            left: 100%;
+        }
+
+        .section {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(218, 2, 14, 0.15);
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--man-utd-red), var(--ferrari-red), var(--ferrari-yellow));
+        }
+
+        .section::after {
+            content: '';
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 40px;
+            height: 20px;
+            background: linear-gradient(45deg, var(--man-utd-red), var(--ferrari-red));
+            border-radius: 3px;
+            opacity: 0.7;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 30px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+            border-radius: 2px;
+        }
+
+        .professional-summary {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            text-align: justify;
+        }
+
+        .education-item, .experience-item {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(15, 23, 42, 0.5);
+            border-radius: 15px;
+            border-left: 4px solid var(--ferrari-red);
+            border-right: 2px solid var(--ferrari-yellow);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .education-item:hover, .experience-item:hover {
+            background: rgba(15, 23, 42, 0.8);
+            transform: translateX(10px);
+            box-shadow: 0 10px 25px rgba(218, 2, 14, 0.2);
+        }
+
+        .education-item::before, .experience-item::before {
+            content: '🏎️';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.2rem;
+            opacity: 0.4;
+        }
+
+        .institution, .company {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--ferrari-red);
+            margin-bottom: 0.5rem;
+        }
+
+        .degree, .position {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .location-date {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .achievements {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .achievements li {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .achievements li::before {
+            content: '🏁';
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .certifications {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        .cert-item {
+            background: rgba(37, 99, 235, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            border-left: 3px solid var(--secondary-blue);
+            transition: all 0.3s ease;
+        }
+
+        .cert-item:hover {
+            background: rgba(37, 99, 235, 0.2);
+            transform: scale(1.05);
+        }
+
+        .interests {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .interest-card {
+            background: linear-gradient(135deg, rgba(218, 2, 14, 0.1), rgba(255, 215, 0, 0.1));
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .interest-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--man-utd-red), var(--ferrari-yellow));
+        }
+
+        .interest-card:hover {
+            transform: translateY(-10px) rotate(2deg);
+            box-shadow: 0 15px 30px rgba(218, 2, 14, 0.25);
+        }
+
+        .interest-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .interest-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--ferrari-red);
+        }
+
+        .future-goals {
+            text-align: center;
+            background: linear-gradient(135deg, var(--card-bg), #1a202c);
+            position: relative;
+        }
+
+        .future-goals::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="%23da020e" opacity="0.05"><polygon points="0,0 1000,100 1000,0"/></svg>'),
+                radial-gradient(circle at 80% 20%, rgba(255, 215, 0, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        /* Ferrari F1 Car Animation */
+        .ferrari-car {
+            position: fixed;
+            bottom: 20px;
+            right: -100px;
+            font-size: 2.5rem;
+            z-index: 1000;
+            animation: ferrari-drive 15s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes ferrari-drive {
+            0% { right: -100px; transform: rotate(0deg); }
+            25% { right: 50%; transform: rotate(-2deg); }
+            50% { right: 50%; transform: rotate(0deg); }
+            75% { right: 50%; transform: rotate(2deg); }
+            100% { right: calc(100% + 100px); transform: rotate(0deg); }
+        }
+
+        /* Manchester United Badge Effect */
+        .man-utd-badge-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, var(--man-utd-red), var(--ferrari-yellow));
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.1; }
+            50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.2; }
+        }
+
+        .future-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            position: relative;
+            z-index: 2;
+        }
+
+        @media (max-width: 768px) {
+            .name {
+                font-size: 2.5rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+            
+            .section {
+                padding: 1.5rem;
+            }
+            
+            .profile-pic {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .profile-pic img {
+                font-size: 3rem;
+            }
+            
+            .languages-container {
+                justify-content: center;
+            }
+        }
+
+        .racing-line {
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--man-utd-red), var(--ferrari-red), var(--ferrari-yellow), transparent);
+            margin: 2rem 0;
+            animation: racing 3s ease-in-out infinite;
+            border-radius: 2px;
+            position: relative;
+        }
+
+        .racing-line::before {
+            content: '🏎️';
+            position: absolute;
+            top: -10px;
+            left: 0;
+            font-size: 1.5rem;
+            animation: car-racing 3s ease-in-out infinite;
+        }
+
+        @keyframes car-racing {
+            0% { left: -50px; transform: rotate(0deg); }
+            50% { left: 50%; transform: rotate(-5deg); }
+            100% { left: calc(100% + 50px); transform: rotate(0deg); }
+        }
+
+        @keyframes racing {
+            0% { transform: scaleX(0); transform-origin: left; }
+            50% { transform: scaleX(1); transform-origin: left; }
+            100% { transform: scaleX(0); transform-origin: right; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="profile-section">
+                <div class="profile-pic-container">
+                    <div class="profile-pic">
+                        <img src="./Profileimg.jpeg" alt="Sai Krishna Profile" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
+                    </div>
+                    <!-- <div class="profile-badges"> -->
+                        <!-- <div class="badge man-utd-badge" style="--delay: 0s;">⚽</div>
+                        <div class="badge ferrari-badge" style="--delay: 0.5s;">🏎️</div> -->
+                    <!-- </div> -->
+                </div>
+            </div>
+            
+            <div class="sports-icons">⚽🏏🏎️🎬</div>
+            <h1 class="name">Paladugu Sai Krishna</h1>
+            <div class="nickname">Nickname: "Sai"</div>
+            
+            <div class="contact-info">
+                <div class="contact-item">📱 9885641886</div>
+                <div class="contact-item">📧 saikrishnapaladugu9@gmail.com</div>
+                <div class="contact-item">🔗 <a href="https://www.linkedin.com/in/sai-krishna-paladugu/" class="linkedin-link">LinkedIn</a></div>
+            </div>
+            
+            <div class="languages-section">
+                <div class="languages-container">
+                    <div class="language-badge">🗣️ Telugu</div>
+                    <div class="language-badge">🌍 English</div>
+                </div>
+            </div>
+        </header>
+
+        <div class="racing-line"></div>
+
+        <section class="section">
+            <h2 class="section-title">🏁 Professional Summary — Driving Fast, Building Smart</h2>
+            <p class="professional-summary">
+                Much like a Formula 1 strategist balancing speed and precision, I've spent the last few years engineering scalable solutions in the tech pit lane of Capgemini. With a passion for innovation and community upliftment, I combine technical know-how with leadership agility. Whether it's optimizing systems or empowering villages, I deliver with the focus of a football playmaker and the endurance of a Test match cricketer.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🎓 Pit Stops in Education</h2>
+            <div class="education-item">
+                <div class="institution">🏆 MDI Gurgaon — PGDM</div>
+                <div class="location-date">📍 Haryana | 2027 (Expected)</div>
+                <p>Sharpening strategic gears in India's top management circuit.</p>
+            </div>
+            <div class="education-item">
+                <div class="institution">🏏 KL University — B.Tech, ECE</div>
+                <div class="location-date">📍 Guntur, AP | 2020</div>
+                <p>Graduated with strong fundamentals in electronics and communication, laying the foundation for my analytical drive.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🛠️ Track Record of Excellence</h2>
+            <div class="experience-item">
+                <div class="company">🏎️ Senior Software Engineer — Capgemini</div>
+                <div class="location-date">📍 Hyderabad | Jun 2021 – May 2024</div>
+                <ul class="achievements">
+                    <li>Turbocharged REST APIs, reducing latency by 40%</li>
+                    <li>Tuned SQL engines, slashing execution time by 50%</li>
+                    <li>Cut AWS costs by 30%, acting like a cost control pit crew</li>
+                    <li>Built microservices that scaled like championship contenders under pressure</li>
+                    <li>Designed CI/CD pipelines as efficient as F1 pit stops, trimming deployment time by 50%</li>
+                    <li>Mentored teams and created onboarding apps for 600+ people — ensuring no team member ever missed the kickoff</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <div class="company">🌍 Community Development Intern — Rotary Club, Tenali</div>
+                <div class="location-date">📍 AP | Aug 2024 – Feb 2025</div>
+                <ul class="achievements">
+                    <li>Orchestrated 5+ community campaigns reaching 1,000+ beneficiaries</li>
+                    <li>Led awareness drives across 3 villages — boosting participation by 30%</li>
+                    <li>Spearheaded skilling programs for 150+ individuals</li>
+                    <li>Managed stakeholder communications and data operations — because every community deserves a winning game plan</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🏅 Certifications — My Training Regimen</h2>
+            <div class="certifications">
+                <div class="cert-item">
+                    <div class="interest-title">AWS Certified Developer – Associate</div>
+                </div>
+                <div class="cert-item">
+                    <div class="interest-title">Foundations of Project Management – Google</div>
+                </div>
+                <div class="cert-item">
+                    <div class="interest-title">AI For Everyone – Andrew Ng</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">🎮 Off the Pitch: Interests & Hobbies</h2>
+            <div class="interests">
+                <div class="interest-card">
+                    <span class="interest-icon">⚽</span>
+                    <div class="interest-title">Football</div>
+                    <p>Tactician of the game; admire high-press strategy & team chemistry</p>
+                    <div style="margin-top: 0.5rem; font-weight: bold; color: var(--man-utd-red);">🔴 Manchester United Fan</div>
+                </div>
+                <div class="interest-card">
+                    <span class="interest-icon">🏏</span>
+                    <div class="interest-title">Cricket</div>
+                    <p>Lover of ODIs & Test match temperament; value consistency over flash</p>
+                </div>
+                <div class="interest-card">
+                    <span class="interest-icon">🏎️</span>
+                    <div class="interest-title">Formula 1</div>
+                    <p>Strategy junkie; follow race analytics and team dynamics (Team Ferrari!)</p>
+                    <div style="margin-top: 0.5rem; font-weight: bold; color: var(--ferrari-red);">🐎 Forza Ferrari!</div>
+                </div>
+                <div class="interest-card">
+                    <span class="interest-icon">🎬</span>
+                    <div class="interest-title">Movies</div>
+                    <p>Hollywood buff and Nolan nerd; see storytelling as a mirror to leadership</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="racing-line"></div>
+
+        <section class="section future-goals">
+            <h2 class="section-title">🧭 Looking Ahead</h2>
+            <div class="man-utd-badge-bg"></div>
+            <p class="future-text">
+                I'm now shifting gears towards an MBA journey — with an eye on Strategy and Information. Like a great movie or a test match comeback, I believe success is about timing, collaboration, and vision.
+            </p>
+        </section>
+    </div>
+    
+    <!-- Ferrari F1 Car Animation -->
+    <div class="ferrari-car">🏎️</div>
+</body>
+</html>
